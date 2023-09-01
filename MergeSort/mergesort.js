@@ -7,7 +7,7 @@ function mergeSort(arr) {
 
   // step 2:Dividing the array - divide right at the middle
   const mid = Math.floor(arr.length / 2)
-  aaa
+
   //1. left arr = elements from the begining upto the midle but not including the middle element
   const leftArr = arr.slice(0, mid)
 
@@ -40,3 +40,31 @@ console.log(mergeSort(arr))
 
 // Big O - the first part is log(n) complexity part two the time complexity is linear because of the while loop
 // Resulting time complexity =  O(nlogn)
+
+// Leete Code #88
+// You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n,
+// representing the number of elements in nums1 and nums2 respectively.
+// Merge nums1 and nums2 into a single array sorted in non-decreasing order.
+// The final sorted array should not be returned by the function, but instead be stored inside the array nums1.
+//  To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged,
+//  and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
+
+function merge88(nums1, m, nums2, n) {
+  let first = m - 1
+  let second = n - 1
+  let i = m + n - 1
+  while (second >= 0) {
+    let firstVal = nums1[first]
+    let secondVal = nums2[second]
+    if (firstVal > secondVal) {
+      nums1[i] = firstVal
+      i--
+      first--
+    } else {
+      nums1[i] = secondVal
+      i--
+      second--
+    }
+  }
+}
+console.log(merge88([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3))
